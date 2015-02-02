@@ -12,6 +12,10 @@ class WebServer {
           port Integer.valueOf(systemPort)
       }
 
+      get "/", {req, res ->
+          res.redirect "/hello/world"
+      }
+
       get "/hello/:name", { request, response ->
           return new ModelAndView([greeted: request.params('name')], "hello.ftl")
       }, new FreeMarkerEngine()
